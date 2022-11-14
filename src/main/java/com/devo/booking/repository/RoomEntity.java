@@ -1,4 +1,4 @@
-package com.devo.booking.room;
+package com.devo.booking.repository;
 
 import lombok.Data;
 
