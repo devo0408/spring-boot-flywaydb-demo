@@ -29,6 +29,12 @@ public class BookingService {
                 .orElseThrow(BookingException::new);
     }
 
+    public boolean isRoomAvailable(String roomUuid, LocalDate startDate, LocalDate endDate) {
+        return roomRepository.findByUuid(roomUuid)
+                .map(roomEntity -> bookingRepository.isBookingExist(roomEntity, startDate, endDate))
+                .orElse(false);
+    }
+
     private BookingEntity buildBookingEntity(RoomEntity roomEntity, LocalDate start, LocalDate end) {
         return BookingEntity.builder()
                 .uuid(IdentifierGenerator.getNextUuid())

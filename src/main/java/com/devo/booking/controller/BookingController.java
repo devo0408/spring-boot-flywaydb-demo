@@ -30,4 +30,13 @@ public class BookingController {
         return bookingService.bookRoom(roomUuid, start, end);
     }
 
+    @GetMapping
+    public boolean isAvailable(@PathVariable("room_uuid") @NonNull String roomUuid,
+                                  @RequestParam(name = "start") @NonNull @DateTimeFormat(iso = DATE) LocalDate start,
+                                  @RequestParam(name = "end") @NonNull @DateTimeFormat(iso = DATE) LocalDate end
+    ) {
+        log.info("Checking booking for the room: {} from {} to {}", roomUuid, start, end);
+        return bookingService.isRoomAvailable(roomUuid, start, end);
+    }
+
 }
