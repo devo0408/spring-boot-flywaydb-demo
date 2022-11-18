@@ -17,7 +17,7 @@ public interface BookingRepository extends CrudRepository<BookingEntity, Integer
     default boolean isBookingExist(RoomEntity room, LocalDate from, LocalDate to) {
         val bookingsInDateRange = findAll(
                 where(room(room))
-                        .and(dateBetween("start_date", from, to).or(dateBetween("end_date", from, to)))
+                        .and(dateBetween("startDate", from, to).or(dateBetween("endDate", from, to)))
         );
 
         return bookingsInDateRange.isEmpty();
