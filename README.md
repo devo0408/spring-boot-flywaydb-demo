@@ -1,4 +1,4 @@
-# Simple booking service
+# Spring boot + Flywaydb demo.
 
 This Spring web application was created as a DEMO for Spring boot + Flywaydb.
 
